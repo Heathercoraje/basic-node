@@ -1,25 +1,26 @@
 {
-  "name": "node-basic",
-  "version": "1.0.0",
-  "description": "A simple web application to understand basic node",
-  "main": "app_file.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Heathercoraje/node-basic.git"
-  },
-  "author": "heathercoraje",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Heathercoraje/node-basic/issues"
-  },
-  "homepage": "https://github.com/Heathercoraje/node-basic#readme",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "fs": "0.0.1-security",
-    "jade": "^1.11.0"
-  }
+	"name": "node-basic",
+	"version": "1.0.0",
+	"description": "A simple web application to understand basic node",
+	"main": "app_file.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Heathercoraje/node-basic.git"
+	},
+	"author": "heathercoraje",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Heathercoraje/node-basic/issues"
+	},
+	"homepage": "https://github.com/Heathercoraje/node-basic#readme",
+	"dependencies": {
+		"body-parser": "^1.18.2",
+		"express": "^4.16.3",
+		"fs": "0.0.1-security",
+		"jade": "^1.11.0",
+		"mysql": "^2.15.0"
+	}
 }
