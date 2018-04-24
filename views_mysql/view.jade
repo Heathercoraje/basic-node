@@ -17,5 +17,11 @@ html
    else 
     h2 Welcome, Heather
     | This is server side Javascript tutorial.
-  div 
-   a(href="/topic/add") Add
+   ul
+    li
+     a(href="/topic/add") add
+    if topic
+     li 
+      a(href=`/topic/${topic.id}` + '/edit') edit
+
+  
