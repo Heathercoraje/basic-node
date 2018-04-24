@@ -9,4 +9,4 @@
 * `UPDATE` table by adding more ex lovers
 * `DELETE` by clicking `delete` button and execute query
 
-I had lots of fun leanring it, especially with `delete` button.
+I had lots of fun learning it, especially with `delete` button.
