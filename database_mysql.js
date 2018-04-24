@@ -1,10 +1,11 @@
-const mysql = require('mysql');
-const connection = mysql.createConnection({
+var mysql = require('mysql');
+var conn = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	port: '3306',
-	password: 'whattheactualf18',
+	password: '111111',
 	database: 'o2'
 });
 
-connection.connect();
+conn.connect();
+
+const sql = 'SELECT * FROM topic';
