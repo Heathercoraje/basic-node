@@ -77,6 +77,35 @@ app.post(['/topic/:id/edit'], (req, res) => {
 	});
 });
 
+app.get('/topic/:id/delete', (req, res) => {
+	let sql = 'SELECT id, title FROM topic';
+	let id = req.params.id;
+	conn.query(sql, (err, topics, fields) => {
+		let sql = 'SELECT * FROM topic WHERE id=?';
+		conn.query(sql, [id], (err, topic) => {
+			if (err || !topic.length) {
+				console.log('There is no record for this id');
+				res.status(500).send('Internal Server Error');
+			} else {
+				res.render('delete', { topics: topics, topic: topic[0] });
+			}
+		});
+	});
+});
+
+app.post('/topic/:id/delete', (req, res) => {
+	let id = req.params.id;
+	let sql = 'DELETE FROM topic WHERE id=?';
+	conn.query(sql, [id], (err, result) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('Internal Server Error');
+		} else {
+			res.redirect('/topic');
+		}
+	});
+});
+
 app.get(['/', '/topic', '/topic/:id'], (req, res) => {
 	let sql = 'SELECT id, title FROM topic';
 	conn.query(sql, (err, topics, fields) => {
