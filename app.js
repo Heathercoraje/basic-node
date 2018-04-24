@@ -10,11 +10,13 @@ conn.connect();
 const app = express();
 const fs = require('fs');
 const bodyParser = require('body-parser');
+
 app.locals.pretty = true;
 app.set('views', './views_mysql');
 app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// let's add
 app.get('/topic/add', (req, res) => {
 	let sql = 'SELECT id, title FROM topic';
 	conn.query(sql, (err, topics, fields) => {
@@ -40,6 +42,7 @@ app.post('/topic/add', (req, res) => {
 	});
 });
 
+// let's edit content
 app.get(['/topic/:id/edit'], (req, res) => {
 	let sql = 'SELECT id,title FROM topic';
 	conn.query(sql, (err, topics, fields) => {
@@ -77,6 +80,7 @@ app.post(['/topic/:id/edit'], (req, res) => {
 	});
 });
 
+// let's delete
 app.get('/topic/:id/delete', (req, res) => {
 	let sql = 'SELECT id, title FROM topic';
 	let id = req.params.id;
@@ -106,6 +110,7 @@ app.post('/topic/:id/delete', (req, res) => {
 	});
 });
 
+// let's read DB
 app.get(['/', '/topic', '/topic/:id'], (req, res) => {
 	let sql = 'SELECT id, title FROM topic';
 	conn.query(sql, (err, topics, fields) => {
