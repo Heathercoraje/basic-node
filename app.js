@@ -18,7 +18,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/topic/add', (req, res) => {
 	let sql = 'SELECT id, title FROM topic';
 	conn.query(sql, (err, topics, fields) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('Internal Server Error');
+		}
 		res.render('add', { topics: topics });
+	});
+});
+
+app.post('/topic/add', (req, res) => {
+	const title = req.body.title;
+	const description = req.body.description;
+	const author = req.body.author;
+	let sql = 'INSERT INTO topic (title, description, author) VALUES (?,?,?)';
+	conn.query(sql, [title, description, author], (err, result, fields) => {
+		if (err) {
+			console.log('Error message: ', err);
+			res.status(500).send('Internal Server Error');
+		}
+		res.redirect(`/topic/${result.insertId}`);
 	});
 });
 
@@ -40,18 +58,6 @@ app.get(['/', '/topic', '/topic/:id'], (req, res) => {
 		} else {
 			res.render('view', { topics: topics });
 		}
-	});
-});
-
-app.post('/topic', (req, res) => {
-	const title = req.body.title;
-	const description = req.body.description;
-	fs.writeFile(`data/${title}`, description, err => {
-		if (err) {
-			console.log('Error message: ', err);
-			res.status(500).send('Internal Server Error');
-		}
-		res.redirect(`/topic/${title}`);
 	});
 });
 
